@@ -25,6 +25,6 @@ jobs:
           command: |
             ssh ieri@159.65.108.242 bash \<< EOF
                 cd /home/ieri/app/
-                ./update_app.sh $TAG
+                ./update_app.sh 0.1.$CIRCLE_BUILD_NUM
             EOF
           
