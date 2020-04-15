@@ -16,3 +16,8 @@ jobs:
           docker build -t josuepadilla/tweeter-test:$TAG .
           echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
           docker push josuepadilla/tweeter-test:$TAG
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh ieri@159.65.108.242 "docker stop tweeter;docker run -d -p 80:80 --name tweeter josuepadilla/tweeter-test:$TAG"
+          
