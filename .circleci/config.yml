@@ -16,9 +16,9 @@ jobs:
           docker build -t josuepadilla/tweeter-test:$TAG .
           echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
           docker push josuepadilla/tweeter-test:$TAG
-    - add_ssh_keys:
-          fingerprints:
-            - "a9:da:d4:57:ff:52:bb:bc:f1:18:e5:c8:60:40:de:69"          
+      - add_ssh_keys:
+            fingerprints:
+              - "a9:da:d4:57:ff:52:bb:bc:f1:18:e5:c8:60:40:de:69"          
       - run:
           name: Deploy Over SSH
           command: |
