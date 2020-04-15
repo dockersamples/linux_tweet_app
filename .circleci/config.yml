@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run: /test.py
 
-      - setup_remote_docker:
+      - setup_remote_docker
       # build and push Docker image
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
