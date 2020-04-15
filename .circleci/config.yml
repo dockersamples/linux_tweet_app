@@ -18,7 +18,7 @@ jobs:
           docker push josuepadilla/tweeter-test:$TAG
       - add_ssh_keys:
             fingerprints:
-              - "a9:da:d4:57:ff:52:bb:bc:f1:18:e5:c8:60:40:de:69"          
+              - "0a:fc:7a:2f:3d:8f:75:64:94:a7:8a:8a:41:33:5c:20"          
       - run:
           name: Deploy Over SSH
           command: |
