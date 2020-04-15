@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: ./test.py
+          command: python3 test.py
           name: Test
 
       - setup_remote_docker
