@@ -23,5 +23,5 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh ieri@159.65.108.242 "docker stop tweeter;docker rm tweeter; docker run -d -p 80:80 --name tweeter josuepadilla/tweeter-test:$TAG"
+            ssh ieri@159.65.108.242 "/home/ieri/app/update_app.sh $TAG"
           
