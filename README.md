@@ -1,5 +1,6 @@
 # Linux Tweet App
 # this is testing
+* new line added
 This is very simple NGINX website that allows a user to send a tweet. 
 
 It's mostly used as a sample application for Docker 101 workshops. 
