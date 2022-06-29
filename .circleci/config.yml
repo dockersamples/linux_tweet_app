@@ -2,12 +2,13 @@ version: 2
 jobs:
   linting:
     docker:
-    - image: alpine:3.16
+    - image: ubuntu:20.04
     steps:
     - checkout
     - run:
         name: Install dependencies
         command: |
+          apt update && apt install -y wget
           wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
           chmod +x /bin/hadolint
     - run:
