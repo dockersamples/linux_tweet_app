@@ -1,16 +1,52 @@
-version: 2.1
-
+version: 2
 jobs:
-  say-hello:
+  linting:
     docker:
-      - image: cimg/base:stable
+    - image: ubuntu:20.04
+    steps:
+    - checkout
+    - run:
+        name: Install dependencies
+        command: |
+          wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
+          chmod +x /bin/hadolint
+    - run:
+        name: Check Dockerfile syntax
+        command: make lint
+  build:
+    docker:
+    - image: amazon/aws-cli
+    environment:
+      CONTAINER_REGISTRY_URI: 969220108910.dkr.ecr.us-east-1.amazonaws.com
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: Login ECR
+          command: aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${CONTAINER_REGISTRY_URI}
+      - run:
+          name: Build docker image
+          command: docker build -t linux-tweet-app:latest .
+      - run:
+          name: Create image tags
+          command: |
+            docker tag linux-tweet-app:latest $CONTAINER_REGISTRY_URI/linux-tweet-app:latest
+            docker tag linux-tweet-app:latest $CONTAINER_REGISTRY_URI/linux-tweet-app:${CIRCLE_SHA1}
+      - run:
+          name: Push images
+          command: |
+            docker push $CONTAINER_REGISTRY_URI/linux-tweet-app:latest
+            docker push $CONTAINER_REGISTRY_URI/linux-tweet-app:${CIRCLE_SHA1}
 
 workflows:
-  say-hello-workflow:
+  version: 2
+  linux-tweet-app-workflow:
     jobs:
-      - say-hello
+    - linting
+    - build:
+        filters:
+          branches:
+            only:
+              - master

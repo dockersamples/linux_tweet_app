@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.23.0
 
 COPY index.html /usr/share/nginx/html
 COPY linux.png /usr/share/nginx/html
