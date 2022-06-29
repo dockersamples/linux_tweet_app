@@ -2,7 +2,7 @@ version: 2
 jobs:
   linting:
     docker:
-    - image: ubuntu:20.04
+    - image: cimg/base:2022.06
     steps:
     - checkout
     - run:
