@@ -2,6 +2,7 @@ name: Build and Push Image to Artifact Registry
 on:
   push:
     branches: [ master ]
+    tags: v0.*
 
 env:
   IMAGE_NAME: linux_tweet_app
@@ -9,7 +10,7 @@ env:
 
 jobs:
   build-push-commit:
-    name: Build and Push to Artifact Registry
+    name: Build and Push to Artifact Registry using commit SHA
     runs-on: ubuntu-latest
     if: ${{ github.ref_type == 'branch' }}
     env:
@@ -39,7 +40,7 @@ jobs:
         docker push us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/artifacts/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
   
   build-push-tag:
-    name: Build and Push to Artifact Registry
+    name: Build and Push to Artifact Registry Using Tag
     runs-on: ubuntu-latest
     if: ${{ github.ref_type == 'tag' }}
     env:
