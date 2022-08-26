@@ -32,7 +32,7 @@ jobs:
 
     - name: Tag and Push Docker Image to Artifact Registry
       run: |-
-        docker tag ${{ env.IMAGE_NAME }}:latest us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.IMAGE_NAME }}:latest
-        docker tag ${{ env.IMAGE_NAME }}:latest us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-        docker push us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.IMAGE_NAME }}:latest
-        docker push us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        docker tag ${{ env.IMAGE_NAME }}:latest us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/linux-tweet-app/${{ env.IMAGE_NAME }}:latest
+        docker tag ${{ env.IMAGE_NAME }}:latest us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/linux-tweet-app/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        docker push us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/linux-tweet-app/${{ env.IMAGE_NAME }}:latest
+        docker push us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/linux-tweet-app/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
