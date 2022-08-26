@@ -1,0 +1,38 @@
+name: Build and Push Image to Artifact Registry
+on:
+  push:
+    branches: [ main ]
+
+env:
+  IMAGE_NAME: linux_tweet_app
+  PROJECT_ID: linux-tweet-app
+
+jobs:
+  build-push-to-registry:
+    name: Build and Push to Artifact Registry
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_TAG: ${{ github.sha }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: google-github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        project_id: ${{ env.PROJECT_ID }}
+        export_default_credentials: true
+
+    - name: Build Docker Image
+      run: docker build -t ${{ env.IMAGE_NAME }}:latest .
+
+    - name: Configure Docker Client
+      run: |-
+        gcloud auth configure-docker us-west1-docker.pkg.dev --quiet
+
+    - name: Tag and Push Docker Image to Artifact Registry
+      run: |-
+        docker tag ${{ env.IMAGE_NAME }}:latest us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.IMAGE_NAME }}:latest
+        docker tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        docker push us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.IMAGE_NAME }}:latest
+        docker push us-west1-docker.pkg.dev/${{ env.PROJECT_ID }}/images/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
