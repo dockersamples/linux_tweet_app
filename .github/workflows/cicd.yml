@@ -1,7 +1,7 @@
 name: Build and Push Image to Artifact Registry
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 env:
   IMAGE_NAME: linux_tweet_app
