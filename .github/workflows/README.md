@@ -1,6 +1,7 @@
 # Linux Tweet App CICD Pipelines
 
-This project has `ci.yml` and `cicd.yml` manifests that handles CICD.
+The `ci.yml` manifests has 3 jobs that handles the CI Pipeline.
 
-- ci.yml
-    This handles
+- The first job builds the app's docker image on every pull request to main.
+- The second job builds, tag image with commit hash and push to GCP Artifact Registry on every commit to `main` branch.
+- The third job builds, tag image with the tagged version and push to GCP Artifact Registry on every tag to `main` branch.
