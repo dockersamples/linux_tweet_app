@@ -24,7 +24,8 @@ jobs:
         env:
           IMAGE_NAME: linux_tweet_app_el
           PROJECT_ID: horizontal-veld-327901
-        run: docker build -t $IMAGE_NAME:latest . 
+          VERSION: 0.1.0
+        run: docker build -t $IMAGE_NAME:$VERSION . 
         
       - name: Configure Docker Client
         run:  |-
@@ -34,6 +35,7 @@ jobs:
         env: 
           IMAGE_NAME: linux_tweet_app_el
           PROJECT_ID: horizontal-veld-327901
+          VERSION: 0.1.0
         run: |-
-          docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest 
-          docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest 
+          docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:$VERSION 
+          docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:$VERSION 
