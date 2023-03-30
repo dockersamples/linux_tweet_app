@@ -32,7 +32,7 @@ jobs:
         
       - name: Push Docker Image to Container Registry GCR
         env: 
-          IMAGE_NAME: linux_tweet_app
+          IMAGE_NAME: linux_tweet_app_el
           PROJECT_ID: horizontal-veld-327901
         run: |-
           docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest 
