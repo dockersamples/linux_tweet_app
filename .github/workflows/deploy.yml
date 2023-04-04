@@ -11,8 +11,8 @@ env:
 jobs:
   Deploy:
     runs-on: ubuntu-latest
-    permission:
-      content: read
+    permissions:
+      contents: read
       packages: write
     steps:
       - name: Copy Code
