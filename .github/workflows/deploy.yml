@@ -34,7 +34,7 @@ jobs:
           
       - name: Push to GCR
         run: |-
-          docker tags $IMAGE_NAME:latest gcr.io/${{ secrets.PROJECT_ID }}/$IMAGE_NAME:latest
+          docker tag $IMAGE_NAME:latest gcr.io/${{ secrets.PROJECT_ID }}/$IMAGE_NAME:latest
           docker push gcr.io/${{ secrets.PROJECT_ID }}/$IMAGE_NAME:latest
 
       - name: Deploy to CloudRUn
