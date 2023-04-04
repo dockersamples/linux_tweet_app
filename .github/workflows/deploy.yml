@@ -38,4 +38,4 @@ jobs:
           docker push gcr.io/${{ secrets.PROJECT_ID }}/$IMAGE_NAME:latest
 
       - name: Deploy to CloudRUn
-        run: gcloud run deploy ${{ secrets.PROJECT_ID }} --image gcr.io/${{ secrets.PROJECT_ID }}/$IMAGE_NAME:latest --platform managed --region $REGION
+        run: gcloud run deploy tweet-app-el --image gcr.io/${{ secrets.PROJECT_ID }}/$IMAGE_NAME:latest --platform managed --region $REGION --port 80
