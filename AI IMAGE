@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <style>
+        body {
+        	background-image: linear-gradient(-74deg, transparent 90%, rgba(255, 255, 255, 0.23) 20%),
+                              linear-gradient(-74deg, transparent 83%, rgba(255, 255, 255, 0.18) 15%),
+                              linear-gradient(-74deg, transparent 76%, rgba(255, 255, 255, 0.1) 15%),
+                              linear-gradient(to top, #f25a02, #f26818, #f97e36);
+    		background-size: cover;
+    		margin-bottom: 0px!important;
+        }
+        div{
+            font-family: 'Geomanist', sans-serif;
+  			font-weight: normal;
+  			color: white;
+            width: 50%;
+            margin: 0 auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        </style>
+    </head>
+    <body>
+       <img src=https://www.google.com/search?sca_esv=c744cb070de47b7e&rlz=1C1CHZN_enIN1123IN1123&q=AI&udm=2&fbs=AEQNm0Aa4sjWe7Rqy32pFwRj0UkWd8nbOJfsBGGB5IQQO6L3JzWreY9LW7LdGrLDAFqYDH3DF_waBUhtl7i7Xh3ndQb6Fn8zyWqVNDC6kxH2uU5tjMxNiRyN0Tu_IJ5U2F44t3g61CzFz2JBWAhJTb-xht_6LzY7f4dcpMn6CNH9wv57t_WlU8aPuzkPZ1e9zslXUCZi2jsHKdTxN4R4G2ipTlnIkLhU4A&sa=X&ved=2ahUKEwjRguOhh_eJAxXSUGwGHb8FD_oQtKgLegQIFRAB&biw=1280&bih=665&dpr=1#vhid=VbHbbd8uZOE0EM&vssid=mosaic
+       <div class="inner">
+            <center><h1>Docker 101!</h1></center>
+<center><img src="./linux.png"></img><P>
+			You've successfully deployed the Linux tweet app! Why not let the world know?
+		  	<p>
+			 <a href="https://twitter.com/intent/tweet?button_hashtag=#SwarmWorkshop" class="twitter-hashtag-button" data-size="large" data-text="I'm learning how to deploy Linux applications to a multi-os #Docker Swarm." data-url="http://www.docker.com" data-lang="en" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+    </body>
+</html>
